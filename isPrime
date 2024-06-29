@@ -1,0 +1,30 @@
+function isPrime($number) {
+	// This function checks if a given number is prime by testing divisibility from 2 up to the square root of the number.
+    if ($number <= 1) {
+        return false;
+    }
+    for ($i = 2; $i <= sqrt($number); $i++) {
+        if ($number % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function findPrimesInRange($start, $end) {
+	// This function iterates through the given range, uses the isPrime function to check each number, and collects the prime numbers in an array.
+
+    $primes = [];
+    for ($i = $start; $i <= $end; $i++) {
+        if (isPrime($i)) {
+            $primes[] = $i;
+        }
+    }
+    return $primes;
+}
+
+$start = 10;
+$end = 50;
+$primes = findPrimesInRange($start, $end);
+echo "Prime numbers between $start and $end: " . implode(', ', $primes); 
+// Outputs: Prime numbers between 10 and 50: 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 
